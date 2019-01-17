@@ -1,0 +1,38 @@
+version: '2'
+services:
+  mysql:
+    container_name: mysql
+    restart: always
+    image: mysql:5.7
+    ports:
+      - "3666:3306"
+    volumes:
+      - ./database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_PASSWORD=secret
+      - MYSQL_DATABASE=home
+      - MYSQL_USER=home
+    networks:
+      - custom
+  www:
+    image: itc-php-7.2:latest
+    restart: always
+    container_name: www
+    ports:
+       - "8080:80"
+    volumes:
+       - ./docroot/www:/var/www
+       - ./docroot/www/public:/var/www/html
+#       - ./vhost/:/etc/apache2/sites-enabled/
+#       - ./conf/php.ini:/usr/local/etc/php/php.ini
+    environment:
+      - VIRTUAL_HOST=fqdn, fqdn.com
+      - DEPLOYMENT=local
+    depends_on:
+      - mysql
+    networks:
+      - custom
+networks:
+  custom:
+    external: true
