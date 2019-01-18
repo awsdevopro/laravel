@@ -1,0 +1,18 @@
+version: "3.1"
+services:
+  certbot-sites:
+    image: sebp/lighttpd
+    container_name: certbot-site
+    ports:
+      - "80"
+    volumes:
+      - ./docroot:/var/www/localhost/htdocs
+    environment:
+      - VIRTUAL_HOST=
+        *.sandbox.com,
+    networks:
+      - laravel
+networks:
+  laravel:
+    external: true
+

@@ -1,0 +1,23 @@
+client_max_body_size 600m;
+upstream whatever {
+                        server 159.203.55.56:80;
+}
+
+server {
+        server_name itconquest.com www.itconquest.com;
+        listen 80 ;
+        access_log /var/log/nginx/access.log;
+        location / {
+                proxy_pass http://159.203.55.56:80/;
+        }
+}
+
+server {
+        server_name www.sarahomestay.com;
+        listen 80;
+        access_log /var/log/nginx/access.log;
+        location / {
+                proxy_pass https://159.203.49.252/;
+        }
+}
+

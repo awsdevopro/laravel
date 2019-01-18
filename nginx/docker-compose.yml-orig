@@ -1,0 +1,13 @@
+nginx-proxy:
+  image: jwilder/nginx-proxy
+  container_name: nginx-proxy
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+    - ./data/certs:/etc/nginx/certs
+    - ./data/logs:/etc/nginx/logs
+  environment:
+    - HTTPS_METHOD=nohttp
+
