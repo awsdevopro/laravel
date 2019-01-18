@@ -1,0 +1,9 @@
+./nginx/certbot-docroot
+./nginx/certs-back
+./nginx/data-bak
+./nginx/data-bak2
+./nginx/data
+./nginx/docker-compose.yml-bak
+./nginx/docker-compose.yml-orig
+./nginx/generate_certbot.sh
+./nginx/generate_crt.sh
