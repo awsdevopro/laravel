@@ -1,5 +1,5 @@
 ./nginx/certbot-docroot
-./nginx/certs-back
+./nginx/certs-bak
 ./nginx/data-bak
 ./nginx/data-bak2
 ./nginx/data
