@@ -1,2 +1,2 @@
-nginx/*
+nginx/data/conf/default.conf
 database/*
