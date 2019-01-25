@@ -1,2 +1,5 @@
 nginx/data/conf/default.conf
 database/*
+database
+docroot
+docroot/*
