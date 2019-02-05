@@ -5,30 +5,29 @@ services:
     restart: always
     image: mysql:5.7
     ports:
-      - "3666:3306"
+      - "3606:3306"
     volumes:
       - ./database:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_PASSWORD=secret
-      - MYSQL_DATABASE=home
-      - MYSQL_USER=home
+      - MYSQL_DATABASE=laravel
+      - MYSQL_USER=root
     networks:
       - custom
   www:
     image: itc-php-7.2:latest
     restart: always
     container_name: www
-    ports:
-       - "8080:80"
+    expose:
+       - "80"
     volumes:
        - ./docroot/www:/var/www
        - ./docroot/www/public:/var/www/html
-#       - ./vhost/:/etc/apache2/sites-enabled/
+       - ./vhost/:/etc/apache2/sites-enabled/
 #       - ./conf/php.ini:/usr/local/etc/php/php.ini
     environment:
-      - VIRTUAL_HOST=fqdn, fqdn.com
-      - DEPLOYMENT=local
+      - VIRTUAL_HOST=happy2let.co.uk, www.happy2let.co.uk 
     depends_on:
       - mysql
     networks:
